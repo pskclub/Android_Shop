@@ -55,13 +55,6 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         initInstances(rootView, savedInstanceState);
-        List<ProductListItem> productList = new ArrayList<>();
-
-        ProductListItem temp = new ProductListItem(1,"เม้า", "อิเล็กทรอนิก", "เลื่อนเคอเซอบนหน้าจอ", R.drawable.a01, 20);
-        productList.add(temp);
-
-        ProductListCollection.getInstance().setProductList(productList);
-
         return rootView;
     }
 
