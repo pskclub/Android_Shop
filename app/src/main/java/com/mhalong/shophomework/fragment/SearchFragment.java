@@ -17,9 +17,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.mhalong.shophomework.R;
+import com.mhalong.shophomework.adapter.ProductFilterListAdapter;
+import com.mhalong.shophomework.model.ProductListCollection;
+import com.mhalong.shophomework.model.ProductListItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,8 +36,15 @@ import butterknife.ButterKnife;
  * Created by nuuneoi on 11/16/2014.
  */
 public class SearchFragment extends Fragment {
-    private Toolbar toolbar;
-    @BindView(R.id.searchView) SearchView searchView;
+    @BindView(R.id.listView)
+    ListView listView;
+
+    @BindView(R.id.searchView)
+    SearchView searchView;
+
+    ProductFilterListAdapter productFilterAdapter;
+    List<ProductListItem> temp;
+
     public SearchFragment() {
         super();
     }
@@ -60,6 +74,38 @@ public class SearchFragment extends Fragment {
         searchView.setIconified(false);
         searchView.requestFocusFromTouch();
 
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                temp = new ArrayList<>();
+                for (int i = 0; i < ProductListCollection.getInstance().getProductList().size(); i++) {
+                    try {
+                        if (newText.equalsIgnoreCase(
+                                ProductListCollection.getInstance().getProductList().get(i).getName().subSequence(0, newText.length()).toString())
+                                || newText.equalsIgnoreCase(
+                                ProductListCollection.getInstance().getProductList().get(i).getCategory().subSequence(0, newText.length()).toString())) {
+                            temp.add(ProductListCollection.getInstance()
+                                    .getProductList().get(i));
+                        }
+                    } catch (Exception ignored) {
+                    }
+
+                }
+
+                productFilterAdapter = new ProductFilterListAdapter();
+                productFilterAdapter.setProductList(temp);
+                listView.setAdapter(productFilterAdapter);
+                productFilterAdapter.notifyDataSetChanged();
+                return true;
+            }
+        });
+
+
         return rootView;
     }
 
@@ -74,8 +120,6 @@ public class SearchFragment extends Fragment {
         // Init 'View' instance(s) with rootView.findViewById here
         // Note: State of variable initialized here could not be saved
         //       in onSavedInstanceState
-        toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
 
     }
 
@@ -89,7 +133,6 @@ public class SearchFragment extends Fragment {
     private void onRestoreInstanceState(Bundle savedInstanceState) {
         // Restore Instance (Fragment level's variables) State here
     }
-
 
 
 }

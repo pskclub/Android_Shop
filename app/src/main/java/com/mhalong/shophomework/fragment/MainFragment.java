@@ -60,7 +60,11 @@ public class MainFragment extends Fragment {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-        adapter.addFrag(new CategoryFragment().newInstance("ไฮไลท์"), "ไฮไลท์");
+        adapter.addFrag(new CategoryFragment().newInstance("Highlight"), "Highlight");
+        adapter.addFrag(new CategoryFragment().newInstance("Colt"), "Colt");
+        adapter.addFrag(new CategoryFragment().newInstance("Glock"), "Glock");
+        adapter.addFrag(new CategoryFragment().newInstance("Smith&Wesson"), "Smith&Wesson");
+        adapter.addFrag(new CategoryFragment().newInstance("Beretta"), "Beretta");
         viewPager.setAdapter(adapter);
     }
 

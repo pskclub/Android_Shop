@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.mhalong.shophomework.fragment.CategoryFragment"
-    android:paddingBottom="80dp">
+    android:paddingBottom="110dp">
 
    <ListView
        android:id="@+id/listView"

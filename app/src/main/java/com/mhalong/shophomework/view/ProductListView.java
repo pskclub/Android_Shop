@@ -86,7 +86,7 @@ public class ProductListView extends BaseCustomViewGroup {
         this.tvPrice.setText("ราคา : " + String.valueOf(price));
         Picasso.with(getContext())
                 .load(image)
-                .resize(500, 500)
+                .resize(500, 300)
                 .centerCrop()
                 .into(this.image);
 
