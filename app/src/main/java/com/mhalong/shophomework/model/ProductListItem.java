@@ -5,6 +5,7 @@ package com.mhalong.shophomework.model;
  */
 
 public class ProductListItem {
+    private int id;
     private String name;
     private String category;
     private String description;
@@ -15,7 +16,8 @@ public class ProductListItem {
 
     }
 
-    public ProductListItem(String name, String category, String description, int image, double price) {
+    public ProductListItem(int id, String name, String category, String description, int image, double price) {
+        this.id = id;
         this.name = name;
         this.category = category;
         this.description = description;
@@ -24,13 +26,13 @@ public class ProductListItem {
     }
 
 
-  /*  public int getId() {
+    public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }*/
+    }
 
     public String getName() {
         return name;
