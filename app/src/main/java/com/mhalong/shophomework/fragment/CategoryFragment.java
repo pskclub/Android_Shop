@@ -84,6 +84,37 @@ public class CategoryFragment extends Fragment {
         ProductListItem temp9 = new ProductListItem(10,"SW1911 Pro series", "Smith&Wesson", "Completing the line between main production", R.drawable.a10, 1230);
         productList.add(temp9);
 
+        ProductListItem temp10 = new ProductListItem(11,"G17", "Glock", "Designed for professionals, the GLOCK 17", R.drawable.a11, 500);
+        productList.add(temp10);
+
+        ProductListItem temp11 = new ProductListItem(12,"G22", "Glock", "GLOCK introduced the G22 .40 in 1990", R.drawable.a12, 500);
+        productList.add(temp11);
+
+        ProductListItem temp12 = new ProductListItem(13,"G43", "Glock", "This auction is for a Glock G43 9mm pistol", R.drawable.a13, 100);
+        productList.add(temp12);
+
+        ProductListItem temp13 = new ProductListItem(14,"G36", "Glock", "Up for sale is a brand new Glock 36 Gen3 .45ACP Pistol.", R.drawable.a14, 540);
+        productList.add(temp13);
+
+        ProductListItem temp14 = new ProductListItem(15,"G41", "Glock", "The GLOCK 41 Gen4 is a practical/tactical .45 AUTO caliber pistol", R.drawable.a15, 670);
+        productList.add(temp14);
+
+        ProductListItem temp15 = new ProductListItem(16,"P2870", "Colt", "Single Action Army with Black Powder Frame", R.drawable.a16, 1600);
+        productList.add(temp15);
+
+        ProductListItem temp16 = new ProductListItem(17,"P2850", "Colt", "Single Action Army with Black Powder Frame", R.drawable.a17, 1600);
+        productList.add(temp16);
+
+        ProductListItem temp17 = new ProductListItem(18,"P1876", "Colt", "Revolver: Single Action", R.drawable.a18, 1800);
+        productList.add(temp17);
+
+        ProductListItem temp18 = new ProductListItem(19,"O6891", "Colt", "Pistol: Semi-Auto", R.drawable.a19, 600);
+        productList.add(temp18);
+
+        ProductListItem temp19 = new ProductListItem(20,"O4691", "Colt", "Pistol: Semi-Auto", R.drawable.a20, 850);
+        productList.add(temp19);
+
+
         ProductListCollection.getInstance().setProductList(productList);
 
         return rootView;
