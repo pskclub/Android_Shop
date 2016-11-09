@@ -28,6 +28,10 @@ public class ProductListCollection {
         mContext = Contextor.getInstance().getContext();
     }
 
+    public List<ProductListItem> getProductList() {
+        return list;
+    }
+
     public void setProductList(List<ProductListItem> list) {
         this.list = list;
     }

@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 
 import com.mhalong.shophomework.R;
 import com.mhalong.shophomework.activity.MainActivity;
+import com.mhalong.shophomework.model.ProductListCollection;
+import com.mhalong.shophomework.model.ProductListItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,18 +54,19 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         initInstances(rootView, savedInstanceState);
+        List<ProductListItem> productList = new ArrayList<>();
 
+        ProductListItem temp = new ProductListItem("เม้า","อิเล็กทรอนิก","เลื่อนเคอเซอบนหน้าจอ",R.drawable);
+
+        productList.add(temp);
+        ProductListCollection.getInstance().setProductList(productList);
 
         return rootView;
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-        adapter.addFrag(new CategoryFragment().newInstance("elec"), "อิเล็กทรอนิกส์");
-        adapter.addFrag(new CategoryFragment().newInstance("women"), "แฟชั่นสุภาพสตรี");
-        adapter.addFrag(new CategoryFragment().newInstance("man"), "แฟชั่นสุภาพบุรุษ");
-        adapter.addFrag(new CategoryFragment().newInstance("home"), "ของตกแต่งบ้าน");
-        adapter.addFrag(new CategoryFragment().newInstance("health"), "สุขภาพและความงาม");
+        adapter.addFrag(new CategoryFragment().newInstance("ไฮไลท์"), "ไฮไลท์");
         viewPager.setAdapter(adapter);
     }
 

@@ -5,20 +5,32 @@ package com.mhalong.shophomework.model;
  */
 
 public class ProductListItem {
-    private int id;
     private String name;
     private String category;
     private String description;
-    private String image;
+    private int image;
     private double price;
 
-    public int getId() {
+    public ProductListItem() {
+
+    }
+
+    public ProductListItem(String name, String category, String description, int image, double price) {
+        this.name = name;
+        this.category = category;
+        this.description = description;
+        this.image = image;
+        this.price = price;
+    }
+
+
+  /*  public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
+    }*/
 
     public String getName() {
         return name;
@@ -44,12 +56,12 @@ public class ProductListItem {
         this.description = description;
     }
 
-    public String getIamge() {
-        return iamge;
+    public int getIamge() {
+        return image;
     }
 
-    public void setImage(String iamge) {
-        this.iamge = iamge;
+    public void setImage(int image) {
+        this.image = image;
     }
 
     public double getPrice() {

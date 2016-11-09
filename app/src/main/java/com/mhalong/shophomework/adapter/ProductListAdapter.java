@@ -4,6 +4,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.mhalong.shophomework.model.ProductListCollection;
+import com.mhalong.shophomework.view.ProductListView;
+
 /**
  * Created by passa on 10/11/2559.
  */
@@ -11,7 +14,7 @@ import android.widget.BaseAdapter;
 public class ProductListAdapter extends BaseAdapter {
     @Override
     public int getCount() {
-        return 0;
+        return (ProductListCollection.getInstance().getProductList() == null) ? 0 : ProductListCollection.getInstance().getProductList().size();
     }
 
     @Override
@@ -26,6 +29,15 @@ public class ProductListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+        ProductListView item;
+        if (convertView != null) {
+            item = (ProductListView) convertView;
+        } else {
+            item = new ProductListView(parent.getContext());
+
+        }
+        item.setData(
+                ProductListCollection.getInstance().getProductList().get(position).getName());
+        return item;
     }
 }
