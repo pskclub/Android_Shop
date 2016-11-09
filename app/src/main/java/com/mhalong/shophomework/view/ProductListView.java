@@ -5,10 +5,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mhalong.shophomework.R;
 import com.mhalong.shophomework.view.state.BundleSavedState;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,6 +22,12 @@ import butterknife.ButterKnife;
 public class ProductListView extends BaseCustomViewGroup {
     @BindView(R.id.tvName)
     TextView tvName;
+    @BindView(R.id.tvDescription)
+    TextView tvDescription;
+    @BindView(R.id.tvPrice)
+    TextView tvPrice;
+    @BindView(R.id.image)
+    ImageView image;
 
     public ProductListView(Context context) {
         super(context);
@@ -72,8 +80,15 @@ public class ProductListView extends BaseCustomViewGroup {
         */
     }
 
-    public void setData(String name) {
+    public void setData(String name, String description, double price, int image) {
         this.tvName.setText(name);
+        this.tvDescription.setText(description);
+        this.tvPrice.setText("ราคา : " + String.valueOf(price));
+        Picasso.with(getContext())
+                .load(image)
+                .resize(500, 500)
+                .centerCrop()
+                .into(this.image);
 
     }
 

@@ -58,7 +58,7 @@ public class ProductListItem {
         this.description = description;
     }
 
-    public int getIamge() {
+    public int getImage() {
         return image;
     }
 

@@ -37,7 +37,11 @@ public class ProductListAdapter extends BaseAdapter {
 
         }
         item.setData(
-                ProductListCollection.getInstance().getProductList().get(position).getName());
+                ProductListCollection.getInstance().getProductList().get(position).getName(),
+                ProductListCollection.getInstance().getProductList().get(position).getDescription(),
+                ProductListCollection.getInstance().getProductList().get(position).getPrice(),
+                ProductListCollection.getInstance().getProductList().get(position).getImage()
+        );
         return item;
     }
 }
