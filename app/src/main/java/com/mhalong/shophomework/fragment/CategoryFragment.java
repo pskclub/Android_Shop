@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.mhalong.shophomework.R;
@@ -15,8 +16,8 @@ import butterknife.ButterKnife;
 
 
 public class CategoryFragment extends Fragment {
-    @BindView(R.id.tvTitle)
-    TextView tvTitle;
+    @BindView(R.id.listView)
+    ListView listView;
     String title;
 
     public CategoryFragment() {
@@ -46,7 +47,8 @@ public class CategoryFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_category, container, false);
         ButterKnife.bind(this, rootView);
         initInstances(rootView, savedInstanceState);
-        tvTitle.setText(title);
+
+
         return rootView;
     }
 

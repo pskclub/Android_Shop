@@ -58,8 +58,8 @@ public class MainFragment extends Fragment {
         List<ProductListItem> productList = new ArrayList<>();
 
         ProductListItem temp = new ProductListItem(1,"เม้า", "อิเล็กทรอนิก", "เลื่อนเคอเซอบนหน้าจอ", R.drawable.a01, 20);
-
         productList.add(temp);
+
         ProductListCollection.getInstance().setProductList(productList);
 
         return rootView;
