@@ -29,6 +29,7 @@ public class MainFragment extends Fragment {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+
     public MainFragment() {
         super();
     }
@@ -56,7 +57,7 @@ public class MainFragment extends Fragment {
         initInstances(rootView, savedInstanceState);
         List<ProductListItem> productList = new ArrayList<>();
 
-        ProductListItem temp = new ProductListItem("เม้า","อิเล็กทรอนิก","เลื่อนเคอเซอบนหน้าจอ",R.drawable);
+        ProductListItem temp = new ProductListItem("เม้า", "อิเล็กทรอนิก", "เลื่อนเคอเซอบนหน้าจอ", R.drawable.a01, 20);
 
         productList.add(temp);
         ProductListCollection.getInstance().setProductList(productList);
@@ -98,6 +99,7 @@ public class MainFragment extends Fragment {
             return mFragmentTitleList.get(position);
         }
     }
+
     @SuppressWarnings("UnusedParameters")
     private void init(Bundle savedInstanceState) {
         // Init Fragment level's variable(s) here
@@ -109,7 +111,7 @@ public class MainFragment extends Fragment {
         // Note: State of variable initialized here could not be saved
         //       in onSavedInstanceState
         toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
         viewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
         setupViewPager(viewPager);
