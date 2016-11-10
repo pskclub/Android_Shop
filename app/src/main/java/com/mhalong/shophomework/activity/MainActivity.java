@@ -20,6 +20,7 @@ import com.mhalong.shophomework.fragment.AccountFragment;
 import com.mhalong.shophomework.fragment.CategoryFragment;
 import com.mhalong.shophomework.fragment.MainFragment;
 import com.mhalong.shophomework.fragment.SearchFragment;
+import com.mhalong.shophomework.model.CartListCollection;
 import com.mhalong.shophomework.model.ProductListCollection;
 import com.mhalong.shophomework.model.ProductListItem;
 
@@ -138,11 +139,13 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.contentContainer, MainFragment.newInstance())
                                 .commit();
+
                         break;
                     case 1:
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.contentContainer, SearchFragment.newInstance())
                                 .commit();
+                        getSupportActionBar().setTitle("ค้นหา");
                         break;
                     case 2:
                         getSupportFragmentManager().beginTransaction()

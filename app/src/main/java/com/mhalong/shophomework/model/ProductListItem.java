@@ -1,5 +1,8 @@
 package com.mhalong.shophomework.model;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 /**
  * Created by passa on 10/11/2559.
  */

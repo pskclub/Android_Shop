@@ -1,5 +1,6 @@
 package com.mhalong.shophomework.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
@@ -15,6 +16,9 @@ import com.mhalong.shophomework.R;
 import com.mhalong.shophomework.adapter.CartListAdapter;
 import com.mhalong.shophomework.adapter.ProductListAdapter;
 import com.mhalong.shophomework.model.CartListCollection;
+
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,7 +46,8 @@ public class CartActivity extends AppCompatActivity {
 
         cartAdapter = new CartListAdapter();
         listView.setAdapter(cartAdapter);
-        tvTotal.setText("ราคาทั้งหมด " + CartListCollection.getInstance().getTotalPrice() + " บาท");
+        NumberFormat formatter = new DecimalFormat("#0.00");
+        tvTotal.setText("ราคาทั้งหมด " + formatter.format(CartListCollection.getInstance().getTotalPrice()) + " บาท");
         if (CartListCollection.getInstance().getProductList().size() == 0) {
             btn_payment.setVisibility(View.GONE);
             tvTotal.setVisibility(View.GONE);
@@ -56,7 +61,8 @@ public class CartActivity extends AppCompatActivity {
                 Toast.makeText(CartActivity.this, "ลบ " + CartListCollection.getInstance().getProductList().get(position).getName() + " ออกจากตะกร้า", Toast.LENGTH_SHORT).show();
                 CartListCollection.getInstance().getProductList().remove(position);
                 cartAdapter.notifyDataSetChanged();
-                tvTotal.setText("ราคาทั้งหมด " + CartListCollection.getInstance().getTotalPrice() + " บาท");
+                NumberFormat formatter = new DecimalFormat("#0.00");
+                tvTotal.setText("ราคาทั้งหมด " + formatter.format(CartListCollection.getInstance().getTotalPrice()) + " บาท");
                 if (CartListCollection.getInstance().getProductList().size() == 0) {
                     btn_payment.setVisibility(View.GONE);
                     tvTotal.setVisibility(View.GONE);
@@ -65,6 +71,14 @@ public class CartActivity extends AppCompatActivity {
                     tvTotal.setVisibility(View.VISIBLE);
                 }
                 getSupportActionBar().setTitle("ตะกร้าสินค้า (" + CartListCollection.getInstance().getProductList().size() + ")");
+            }
+        });
+
+        btn_payment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(CartActivity.this, DeliveryActivity.class);
+                startActivity(myIntent);
             }
         });
     }

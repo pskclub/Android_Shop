@@ -12,6 +12,9 @@ import com.mhalong.shophomework.R;
 import com.mhalong.shophomework.view.state.BundleSavedState;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -81,9 +84,10 @@ public class ProductListView extends BaseCustomViewGroup {
     }
 
     public void setData(String name, String description, double price, int image) {
+        NumberFormat formatter = new DecimalFormat("#0.00");
         this.tvName.setText(name);
         this.tvDescription.setText(description);
-        this.tvPrice.setText("ราคา : " + String.valueOf(price) + " บาท");
+        this.tvPrice.setText("ราคา : " + formatter.format(price) + " บาท");
         Picasso.with(getContext())
                 .load(image)
                 .resize(500, 300)

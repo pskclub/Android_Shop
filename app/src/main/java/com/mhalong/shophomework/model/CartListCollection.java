@@ -23,6 +23,9 @@ public class CartListCollection {
 
     private Context mContext;
     private List<ProductListItem> list = new ArrayList<>();
+    private String address;
+    private String tel;
+    private String name;
 
     private CartListCollection() {
         mContext = Contextor.getInstance().getContext();
@@ -47,4 +50,27 @@ public class CartListCollection {
         this.list.add(product);
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

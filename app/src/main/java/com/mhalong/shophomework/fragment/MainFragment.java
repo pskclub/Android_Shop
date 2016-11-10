@@ -61,6 +61,7 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         initInstances(rootView, savedInstanceState);
+        getActivity().setTitle(R.string.app_name);
         return rootView;
     }
 

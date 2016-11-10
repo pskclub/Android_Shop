@@ -39,6 +39,7 @@ import butterknife.ButterKnife;
  * Created by nuuneoi on 11/16/2014.
  */
 public class SearchFragment extends Fragment {
+    private Toolbar toolbar;
     @BindView(R.id.listView)
     ListView listView;
 
@@ -73,6 +74,7 @@ public class SearchFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_search, container, false);
         ButterKnife.bind(this, rootView);
         initInstances(rootView, savedInstanceState);
+        getActivity().setTitle("ค้นหา");
         searchView.setFocusable(true);
         searchView.setIconified(false);
         searchView.requestFocusFromTouch();
@@ -129,6 +131,7 @@ public class SearchFragment extends Fragment {
         // Init 'View' instance(s) with rootView.findViewById here
         // Note: State of variable initialized here could not be saved
         //       in onSavedInstanceState
+
 
     }
 
