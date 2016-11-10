@@ -11,21 +11,20 @@ import java.util.List;
 /**
  * Created by nuuneoi on 11/16/2014.
  */
-public class ProductListCollection {
+public class CartListCollection {
 
-    private static ProductListCollection instance;
+    private static CartListCollection instance;
 
-    public static ProductListCollection getInstance() {
+    public static CartListCollection getInstance() {
         if (instance == null)
-            instance = new ProductListCollection();
+            instance = new CartListCollection();
         return instance;
     }
 
     private Context mContext;
     private List<ProductListItem> list = new ArrayList<>();
-    private int memnber = 0;
 
-    private ProductListCollection() {
+    private CartListCollection() {
         mContext = Contextor.getInstance().getContext();
     }
 
@@ -33,15 +32,19 @@ public class ProductListCollection {
         return list;
     }
 
+    public double getTotalPrice() {
+        double total = 0;
+        for (int i = 0; i <= list.size() - 1; i++)
+            total = total + list.get(i).getPrice();
+        return total;
+    }
+
     public void setProductList(List<ProductListItem> list) {
         this.list = list;
     }
 
-    public int getMemnber() {
-        return memnber;
+    public void addProduct(ProductListItem product) {
+        this.list.add(product);
     }
 
-    public void setMemnber(int memnber) {
-        this.memnber = memnber;
-    }
 }

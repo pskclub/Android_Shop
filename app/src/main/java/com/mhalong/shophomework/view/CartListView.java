@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 /**
  * Created by nuuneoi on 11/16/2014.
  */
-public class ProductListView extends BaseCustomViewGroup {
+public class CartListView extends BaseCustomViewGroup {
     @BindView(R.id.tvName)
     TextView tvName;
     @BindView(R.id.tvDescription)
@@ -29,20 +29,20 @@ public class ProductListView extends BaseCustomViewGroup {
     @BindView(R.id.image)
     ImageView image;
 
-    public ProductListView(Context context) {
+    public CartListView(Context context) {
         super(context);
         initInflate();
         initInstances();
     }
 
-    public ProductListView(Context context, AttributeSet attrs) {
+    public CartListView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initInflate();
         initInstances();
         initWithAttrs(attrs, 0, 0);
     }
 
-    public ProductListView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CartListView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initInflate();
         initInstances();
@@ -50,7 +50,7 @@ public class ProductListView extends BaseCustomViewGroup {
     }
 
     @TargetApi(21)
-    public ProductListView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public CartListView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         initInflate();
         initInstances();
@@ -58,7 +58,7 @@ public class ProductListView extends BaseCustomViewGroup {
     }
 
     private void initInflate() {
-        inflate(getContext(), R.layout.product_list, this);
+        inflate(getContext(), R.layout.cart_list, this);
     }
 
     private void initInstances() {
@@ -83,7 +83,7 @@ public class ProductListView extends BaseCustomViewGroup {
     public void setData(String name, String description, double price, int image) {
         this.tvName.setText(name);
         this.tvDescription.setText(description);
-        this.tvPrice.setText("ราคา : " + String.valueOf(price) + " บาท");
+        this.tvPrice.setText("ราคา : " + String.valueOf(price));
         Picasso.with(getContext())
                 .load(image)
                 .resize(500, 300)

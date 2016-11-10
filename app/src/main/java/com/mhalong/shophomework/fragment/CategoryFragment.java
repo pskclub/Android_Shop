@@ -7,12 +7,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mhalong.shophomework.R;
 import com.mhalong.shophomework.adapter.ProductFilterListAdapter;
 import com.mhalong.shophomework.adapter.ProductListAdapter;
+import com.mhalong.shophomework.model.CartListCollection;
 import com.mhalong.shophomework.model.ProductListCollection;
 import com.mhalong.shophomework.model.ProductListItem;
 
@@ -79,7 +82,19 @@ public class CategoryFragment extends Fragment {
             productFilterAdapter.setProductList(temp);
             listView.setAdapter(productFilterAdapter);
         }
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (title.equals("Highlight")) {
+                    CartListCollection.getInstance().addProduct(ProductListCollection.getInstance().getProductList().get(position));
+                    Toast.makeText(getActivity(), "เพิ่ม " + ProductListCollection.getInstance().getProductList().get(position).getName() + " เข้าสู่ตะกร้า", Toast.LENGTH_SHORT).show();
+                } else {
+                    CartListCollection.getInstance().addProduct(temp.get(position));
+                    Toast.makeText(getActivity(), "เพิ่ม " + temp.get(position).getName() + " เข้าสู่ตะกร้า", Toast.LENGTH_SHORT).show();
+                }
 
+            }
+        });
         return rootView;
     }
 

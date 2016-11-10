@@ -1,5 +1,6 @@
 package com.mhalong.shophomework.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -10,10 +11,15 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.mhalong.shophomework.R;
+import com.mhalong.shophomework.activity.CartActivity;
 import com.mhalong.shophomework.activity.MainActivity;
 import com.mhalong.shophomework.model.ProductListCollection;
 import com.mhalong.shophomework.model.ProductListItem;
@@ -45,7 +51,7 @@ public class MainFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         init(savedInstanceState);
-
+        setHasOptionsMenu(true);
         if (savedInstanceState != null)
             onRestoreInstanceState(savedInstanceState);
     }
@@ -128,4 +134,21 @@ public class MainFragment extends Fragment {
         // Restore Instance (Fragment level's variables) State here
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.cart, menu);  // Use filter.xml from step 1
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_cart) {
+            Intent myIntent = new Intent(getActivity(), CartActivity.class);
+            getActivity().startActivity(myIntent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
 }

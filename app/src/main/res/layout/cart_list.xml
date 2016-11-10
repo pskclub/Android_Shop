@@ -55,7 +55,7 @@
                 android:paddingRight="8dp"
                 android:layout_gravity="right"
                 android:clickable="false"
-                android:src="@drawable/ic_shopping_cart_black_24dp"/>
+                android:src="@drawable/ic_remove_shopping_cart_black_24dp"/>
         </LinearLayout>
     </LinearLayout>
 

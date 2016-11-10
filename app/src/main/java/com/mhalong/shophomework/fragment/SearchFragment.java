@@ -17,11 +17,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mhalong.shophomework.R;
 import com.mhalong.shophomework.adapter.ProductFilterListAdapter;
+import com.mhalong.shophomework.model.CartListCollection;
 import com.mhalong.shophomework.model.ProductListCollection;
 import com.mhalong.shophomework.model.ProductListItem;
 
@@ -104,7 +107,13 @@ public class SearchFragment extends Fragment {
                 return true;
             }
         });
-
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                CartListCollection.getInstance().addProduct(temp.get(position));
+                Toast.makeText(getActivity(), "เพิ่ม " + temp.get(position).getName() + " เข้าสู่ตะกร้า", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return rootView;
     }
