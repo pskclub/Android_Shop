@@ -56,6 +56,7 @@ public class PaymentActivity extends AppCompatActivity {
                             "ตกลง",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
+                                    finish();
                                     CartListCollection.getInstance().getProductList().clear();
                                     Intent myIntent = new Intent(PaymentActivity.this, MainActivity.class);
                                     startActivity(myIntent);
