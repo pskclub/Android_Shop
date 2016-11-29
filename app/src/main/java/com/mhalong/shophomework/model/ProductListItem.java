@@ -12,14 +12,14 @@ public class ProductListItem {
     private String name;
     private String category;
     private String description;
-    private int image;
+    private String image;
     private double price;
 
     public ProductListItem() {
 
     }
 
-    public ProductListItem(int id, String name, String category, String description, int image, double price) {
+    public ProductListItem(int id, String name, String category, String description, String image, double price) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -61,11 +61,11 @@ public class ProductListItem {
         this.description = description;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

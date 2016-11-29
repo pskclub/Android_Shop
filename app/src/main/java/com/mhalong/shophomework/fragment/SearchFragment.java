@@ -45,7 +45,7 @@ public class SearchFragment extends Fragment {
 
     @BindView(R.id.searchView)
     SearchView searchView;
-
+    String title;
     ProductFilterListAdapter productFilterAdapter;
     List<ProductListItem> temp;
 
@@ -53,9 +53,10 @@ public class SearchFragment extends Fragment {
         super();
     }
 
-    public static SearchFragment newInstance() {
+    public static SearchFragment newInstance(String title) {
         SearchFragment fragment = new SearchFragment();
         Bundle args = new Bundle();
+        args.putString("title", title);
         fragment.setArguments(args);
         return fragment;
     }
@@ -64,6 +65,7 @@ public class SearchFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         init(savedInstanceState);
+        title = getArguments().getString("title");
         if (savedInstanceState != null)
             onRestoreInstanceState(savedInstanceState);
     }
@@ -78,11 +80,35 @@ public class SearchFragment extends Fragment {
         searchView.setFocusable(true);
         searchView.setIconified(false);
         searchView.requestFocusFromTouch();
+        if(title != null){
+            searchView.setQuery(title, true);
+            Toast.makeText(getActivity(), "dsadasdasdas", Toast.LENGTH_SHORT).show();
+            temp = new ArrayList<>();
+            for (int i = 0; i < ProductListCollection.getInstance().getProductList().size(); i++) {
+                try {
+                    if (title.equalsIgnoreCase(
+                            ProductListCollection.getInstance().getProductList().get(i).getName().subSequence(0, title.length()).toString())
+                            || title.equalsIgnoreCase(
+                            ProductListCollection.getInstance().getProductList().get(i).getCategory().subSequence(0, title.length()).toString())) {
+                        temp.add(ProductListCollection.getInstance()
+                                .getProductList().get(i));
+                    }
+                } catch (Exception ignored) {
+                }
+
+            }
+
+            productFilterAdapter = new ProductFilterListAdapter();
+            productFilterAdapter.setProductList(temp);
+            listView.setAdapter(productFilterAdapter);
+            productFilterAdapter.notifyDataSetChanged();
+        }
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                return false;
+
+                return true;
             }
 
             @Override

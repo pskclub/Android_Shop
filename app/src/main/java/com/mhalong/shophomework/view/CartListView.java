@@ -84,7 +84,7 @@ public class CartListView extends BaseCustomViewGroup {
         */
     }
 
-    public void setData(String name, String description, double price, int image) {
+    public void setData(String name, String description, double price, String image) {
         NumberFormat formatter = new DecimalFormat("#0.00");
         this.tvName.setText(name);
         this.tvDescription.setText(description);
